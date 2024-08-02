@@ -16,6 +16,7 @@ let food = {
 };
 
 let d;
+let score = 0;
 document.addEventListener("keydown", direction);
 
 function direction(event) {
@@ -66,6 +67,7 @@ function draw() {
             x: Math.floor(Math.random() * columns) * box,
             y: Math.floor(Math.random() * rows) * box,
         };
+        score += 10;
     } else {
         snake.pop();
     }
@@ -80,6 +82,12 @@ function draw() {
     }
 
     snake.unshift(newHead);
+    //  for displaying score
+    ctx.fillStyle = "white";
+    ctx.font = "20px Arial";
+    ctx.textAlign = "right";
+    ctx.fillText("Score: " + score, canvas.width - 10, 30);
+
 }
 
 let game = setInterval(draw, 100);
